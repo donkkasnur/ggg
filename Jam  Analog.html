@@ -1,0 +1,53 @@
+<html>
+	<head>
+		<title>Jam Analog Ahmad</title>
+		<link rel="stylesheet" href="pengaturan.css">
+	</head>
+	<body>
+		<div class="clock">
+			<div class="text">
+				<p>SMKN 1 KOTA JAMBI - XI TKJ 3 - </p>
+			</div>
+			<img src="smkn.png" width="50%" style="opacity: 80%;">
+			<div class="hour">
+				<div class="hr" id="hr">
+				
+				</div>
+			</div>
+			<div class="min">
+				<div class="mn" id="mn">
+				
+				</div>
+			</div>
+			<div class="sec">
+				<div class="sc" id="sc">
+				
+				</div>
+			</div>
+		</div>
+		<script>
+			
+			
+			let text = document.querySelector('.text p');
+			text.innerHTML = text.innerText.split("").map((char, i) => 
+			`<b style="transform:rotate(${i * 11.7}deg)">${char}</b>`).join("");
+			
+			const deg = 6;
+			const hr = document.querySelector('#hr');
+			const mn = document.querySelector('#mn');
+			const sc = document.querySelector('#sc');
+			
+			setInterval (()   =>  {
+			
+			let day = new Date();
+			let hh = day.getHours() * 30;
+			let mm = day.getMinutes() * deg;
+			let ss = day.getSeconds() * deg;
+			
+			hr.style.transform = `rotateZ(${(hh)+(mm/12)}deg)`;
+			mn.style.transform = `rotateZ(${mm}deg)`;
+			sc.style.transform = `rotateZ(${ss}deg)`;
+			})
+		</script>
+	</body>
+</html>
